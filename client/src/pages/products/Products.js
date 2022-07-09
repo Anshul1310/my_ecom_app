@@ -46,15 +46,15 @@ const Products = () => {
                                 <option value="asc">Asc</option>
                             </select>
                         </div>
-                        <div className="NumOfItems">
+                        {/* <div className="NumOfItems">
                             <select name="itemNum" id="itemNum">
                                 <option value="10">10</option>
                                 <option value="20">20</option>
                                 <option value="30">30</option>
                                 <option value="40">40</option>
                             </select>
-                        </div>
-                        <div className="actionBox">
+                        </div> */}
+                        {/* <div className="actionBox">
                             <input type="checkbox" name="action4" id="action4" />
                             <label htmlFor="action4" className="drop">Action <ArrowDropDownIcon /></label>
                             <div className="dropDown4">
@@ -70,7 +70,7 @@ const Products = () => {
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="productsAndFilter">
                         <ProductsTable modalOpen={modalOpen} />
@@ -119,7 +119,7 @@ const Products = () => {
                                         </div>
                                     }
                                 </div>
-                                <div className="priceFilter">
+                                {/* <div className="priceFilter">
                                     <div className="filterHeading" onClick={() => setReadMore2(!readMore2)}>
                                         <h3>Price</h3>
                                         <FaAngleDown />
@@ -129,8 +129,8 @@ const Products = () => {
                                             <input type="text" name="pricInput" id="pricInput" />
                                         </div>
                                     }
-                                </div>
-                                <div className="colorFilter">
+                                </div> */}
+                                {/* <div className="colorFilter">
                                     <div className="filterHeading" onClick={() => setReadMore3(!readMore3)}>
                                         <h3>Colors</h3>
                                         <FaAngleDown />
@@ -163,7 +163,7 @@ const Products = () => {
                                             </div>
                                         </div>
                                     }
-                                </div>
+                                </div> */}
                             </div>
                             <div className="addProductBtn">
                                 <Link to='/Products/addProduct'>

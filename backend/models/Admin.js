@@ -5,6 +5,6 @@ const schema=mongoose.Schema({
 	password:String,
 	_id:String,
 	phone:Number,
-	access:Array
-})
+	access:Object
+},{ timestamps: true})
 module.exports=mongoose.model("Admin", schema);

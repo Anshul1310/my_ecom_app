@@ -5,16 +5,54 @@ import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrow
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import { Link, NavLink } from 'react-router-dom'
 import './staticProducts.css'
+import api from "../../http";
+import {useState} from "react";
 import StaticProductsTable from '../static/StaticProductsTable';
 import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
 
 const StaticProducts = () => {
+
+    const [title,setTitle]=useState("");
+    const [price,setPrice]=useState("");
+    const [id, setId]=useState(localStorage.getItem("lastProduct"));
+    const [measuringUnit,setMeasuringUnit]=useState("");
+    const [location,setLocation]=useState("");
+
+    const setModelDetail=(id)=>{
+        api.post("/api/product-price/find",{id}).then((data)=>{
+                    console.log(data.data)
+                    setTitle(data.data.title);
+                    setPrice(data.data.price);
+                    setMeasuringUnit(data.data.measuringUnit);
+                    setLocation(data.data.location);
+                }).catch((err)=>{
+                    alert("Network Conncetion Error");
+                    console.log(err);
+                });
+
+    }
+
+const handleEdit=(e)=>{
+    console.log("dsd");
+    api.post("/api/product-price/update",{id, title, measuringUnit, price, location}).then((data)=>{
+                    modalClose();
+                    
+                }).catch((err)=>{
+                    alert("Network Conncetion Error");
+                    console.log(err);
+                });
+}
     const modalOpen = () => {
+        setId(localStorage.getItem("lastProduct"));
+        setModelDetail(localStorage.getItem("lastProduct"));
+        console.log(localStorage.getItem("lastProduct"));
         const modal = document.getElementById('modal');
         const container = document.getElementById('Container');
         container.style.opacity = '0.3'
         modal.style.display = 'flex'
+
+
     }
     const modalClose = () => {
         const modal = document.getElementById('modal');
@@ -31,21 +69,21 @@ const StaticProducts = () => {
                 <div className="staticProductsPage">
                     <div className="sortAndActions">
                         <h2>All Products</h2>
-                        <div className="sortBox">
+                        {/*<div className="sortBox">
                             <select name="sorting" id="sorting">
                                 <option value="sort">Sort By</option>
                                 <option value="desc">Desc</option>
                                 <option value="asc">Asc</option>
                             </select>
-                        </div>
-                        <div className="NumOfItems">
+                        </div>*/}
+                        {/*<div className="NumOfItems">
                             <select name="itemNum" id="itemNum">
                                 <option value="10">10</option>
                                 <option value="20">20</option>
                                 <option value="30">30</option>
                                 <option value="40">40</option>
                             </select>
-                        </div>
+                        </div>*/}
                         <div className="addSProducts">
                             <Link to='/staticProducts/addProduct'>
                                 <span>Add Products</span>
@@ -53,7 +91,7 @@ const StaticProducts = () => {
                         </div>
                     </div>
                     <div className="staticProducts">
-                        <StaticProductsTable modalOpen={modalOpen} />
+                        <StaticProductsTable  modalOpen={modalOpen} />
                     </div>
                     <div className="pageNum">
                         <KeyboardDoubleArrowLeftIcon />
@@ -70,23 +108,23 @@ const StaticProducts = () => {
                 <div className="editFields2">
                     <div className="staticProductsInput">
                         <label>Product Name</label>
-                        <input type="text" placeholder="Ex-Cookie" />
+                        <input onChange={(e)=>setTitle(e.target.value)} value={title} type="text" placeholder="Ex-Cookie" />
                     </div>
                     <div className="staticProductsInput">
                         <label>Unit Of Measurement</label>
-                        <input type="text" placeholder="Ex-kg" />
+                        <input onChange={(e)=>setMeasuringUnit(e.target.value)} value={measuringUnit} type="text" placeholder="Ex-kg" />
                     </div>
                     <div className="staticProductsInput">
                         <label>Price</label>
-                        <input type="text" placeholder="Ex-$750" />
+                        <input onChange={(e)=>setPrice(e.target.value)} value={price} type="text" placeholder="Ex-$750" />
                     </div>
                     <div className="staticProductsInput">
-                        <label>Date</label>
-                        <input type="text" placeholder="Ex-30/06/2022" />
+                        <label>Location</label>
+                        <input value={location} onChange={(e)=>setLocation(e.target.value)} type="text" placeholder="Ex-30/06/2022" />
                     </div>
                 </div>
                 <div className="editAndCloseBtn">
-                    <div className="editBtn"><EditIcon /> Edit Product</div>
+                    <div className="editBtn" onClick={(e)=>handleEdit(e)}><EditIcon /> Edit Product</div>
                     <div className="closeBtn" onClick={() => modalClose()}><CloseIcon /> Close</div>
                 </div>
             </div>

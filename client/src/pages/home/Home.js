@@ -36,7 +36,7 @@ const Home = () => {
 				</div>
 
 				<div className="section">
-					<div className="recentProducts">
+					{/* <div className="recentProducts">
 						<h2>Recent Products</h2>
 						<p>Products added today. Click <Link to='/products'>here</Link> for more details </p>
 						<table>
@@ -172,9 +172,9 @@ const Home = () => {
 								</tr>
 							</tbody>
 						</table>
-					</div>
+					</div> */}
 
-					<div className="notification">
+					{/* <div className="notification">
 						<div className="notificationMain">
 							<h2>Notification</h2>
 							<Link to='/notification'> <ArrowForwardIcon style={{ cursor: 'pointer', color: '#000' }} /></Link>
@@ -218,7 +218,7 @@ const Home = () => {
 							<div className="readAllBtn"><DoneIcon /> Make all read</div>
 							<div className="deleteAllBtn"><DeleteIcon /> Delete all</div>
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</div>);

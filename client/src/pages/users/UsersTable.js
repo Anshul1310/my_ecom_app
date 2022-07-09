@@ -38,7 +38,7 @@ const UsersTable = () => {
             </thead>
             <tbody>
                {buyers.map((data,id)=>{
-                return <TableRow key={id} name={data.name} organization={data.organization}
+                return <TableRow key={id} _id={data._id} name={data.name} organization={data.organization}
                     email={data.email} phone={data.phone} additional_number={data.additional_number}
                     contact_person={data.contact_person} address={data.address}
                     tin={data.tin} level={data.level} type={data.type} />

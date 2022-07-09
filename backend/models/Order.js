@@ -19,5 +19,5 @@ const schema=mongoose.Schema({
 	status:String,
 	paymentType:String,
 	orderId:String
-});
+},{ timestamps: true});
 module.exports=mongoose.model("Order",schema);

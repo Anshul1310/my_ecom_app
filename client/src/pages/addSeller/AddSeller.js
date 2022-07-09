@@ -14,22 +14,21 @@ const AddSeller = () => {
     const [name, setName]=useState();
     const [gender, setGender]=useState();
     const [age,setAge]=useState();
-    const [category,setCategory]=useState();
+    const [region,setRegion]=useState();
     const [zone, setZone]=useState();
     const [woreda,setWoreda]=useState();
     const [kebele,setKebele]=useState();
     const [phone,setPhone]=useState();
     const [additional_number,setAdditionalNumber]=useState();
     const [email,setEmail]=useState();
-    const [type,setType]=useState();
-    const [level,setLevel]=useState();
+    const [type,setType]=useState("Importer");
+    const [level,setLevel]=useState("Level 1");
     const [bookNumber,setBookNumber]=useState();
     const [tin,setTin]=useState();
 
     const handleClick=(e)=>{
             api.post("/api/sellers/add",{
-                    name, email, gender, bookNumber, woreda, kebele, tin, additional_number
-                    , phone, type, level
+                    name, email, gender, bookNumber, zone,woreda, kebele,region, tin, additional_number, phone, type, level, age
                 }).then((data)=>{
                     navigate("/sellers");
                     console.log(data.data);
@@ -68,7 +67,7 @@ const AddSeller = () => {
 
                                 <div className="sellerCate">
                                     <label htmlFor="sellerCategory">Category</label>
-                                    <select name="sellerCategory" onChange={(e)=>{setCategory(e.target.value)}} id="sellerCategory">
+                                    <select name="sellerCategory" onChange={(e)=>{setRegion(e.target.value)}} id="sellerCategory">
                                         <option value="select">Select Region</option>
                                         <option value="Tigray">Tigray</option>
                                         <option value="Afar">Afar</option>
@@ -91,7 +90,7 @@ const AddSeller = () => {
                                 </div>
                                 <div className="sellerKebele">
                                     <label htmlFor="kebele"> Kebele</label>
-                                    <input type="text" name="kebele" onChange={(e)=>{setKebele(e.target.value)}} onChange={(e)=>{setName(e.target.value)}} id="kebele" placeholder="Kebele" />
+                                    <input type="text" name="kebele" onChange={(e)=>{setKebele(e.target.value)}}  id="kebele" placeholder="Kebele" />
                                 </div>
                                 <div className="sellerNumber">
                                     <label htmlFor="number"> Phone Number</label>
@@ -107,7 +106,7 @@ const AddSeller = () => {
                                 </div>
                                 <div className="sellerCate">
                                     <label htmlFor="sellerCategory" >Seller Type</label>
-                                    <select name="sellerCategory" onChange={(e)=>{setCategory(e.target.value)}} id="sellerCategory">
+                                    <select name="sellerCategory" onChange={(e)=>{setType(e.target.value)}} id="sellerCategory">
                                         <option value="select">Select Category</option>
                                         <option value="Multi Farmer">Multi Farmer</option>
                                         <option value="Producer">Producer</option>
@@ -117,7 +116,7 @@ const AddSeller = () => {
                                 </div>
                                 <div className="sellerCate">
                                     <label htmlFor="sellerCategory">Seller Level</label>
-                                    <select name="sellerCategory" onChange={(e)=>{setCategory(e.target.value)}} id="sellerCategory">
+                                    <select name="sellerCategory" onChange={(e)=>{setLevel(e.target.value)}} id="sellerCategory">
                                         <option value="Level 1">Level 1</option>
                                         <option value="Level 2">Level 2</option>
                                         <option value="Level 3">Level 3</option>

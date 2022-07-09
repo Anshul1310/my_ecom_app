@@ -4,12 +4,28 @@ import glass from '../home/glass.jpg'
 import headPhone from '../home/headPhone.jpg'
 import perfume from '../home/perfume.jpg'
 import EditIcon from '@mui/icons-material/Edit';
+import {useEffect, useState} from "react";
+import TableRow from "./TableRow";
+import api from "../../http";
+
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const ProductsTable = ({ modalOpen }) => {
     const functio = () => {
         modalOpen()
     }
+
+    const [products, setProducts]=useState([]);
+
+    useEffect(()=>{
+ api.get("/api/product/all").then((data)=>{
+                    console.log(data.data);
+                    setProducts(data.data);
+                }).catch((err)=>{
+                    alert("Network Conncetion Error");
+                    console.log(err);
+                });
+    },[])
     return (
         <table>
             <thead>
@@ -29,206 +45,11 @@ const ProductsTable = ({ modalOpen }) => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="check" />
-                        <label htmlFor="check"></label>
-                    </td>
-                    <td className='id'>#1</td>
-                    <td>
-                        <img src={cookie} alt="cookie" />
-                    </td>
-                    <td>Cookie</td>
-                    <td className="StockIn">In Stock</td>
-                    <td>$4990</td>
-                    <td>02/03/2021</td>
-                    <td>
-                        <div className="editIcon"><EditIcon onClick={() => functio(this)} /></div>
-                    </td>
-                    <td>
-                        <div className="deleteIcon"><DeleteIcon /></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="check" />
-                        <label htmlFor="check"></label>
-                    </td>
-                    <td className='id'>#2</td>
-                    <td>
-                        <img src={headPhone} alt="headphone" />
-                    </td>
-                    <td>Headphone</td>
-                    <td className="StockOut">Out of Stock</td>
-                    <td>$8700</td>
-                    <td>24/04/2022</td>
-                    <td>
-                        <div className="editIcon"><EditIcon onClick={() => functio(this)} /></div>
-                    </td>
-                    <td>
-                        <div className="deleteIcon"><DeleteIcon /></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="check" />
-                        <label htmlFor="check"></label>
-                    </td>
-                    <td className='id'>#3</td>
-                    <td>
-                        <img src={glass} alt="glass" />
-                    </td>
-                    <td>glass</td>
-                    <td className="StockIn">In Stock</td>
-                    <td>$7020</td>
-                    <td>12/08/2022</td>
-                    <td>
-                        <div className="editIcon"><EditIcon onClick={() => functio(this)} /></div>
-                    </td>
-                    <td>
-                        <div className="deleteIcon"><DeleteIcon /></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="check" />
-                        <label htmlFor="check"></label>
-                    </td>
-                    <td className='id'>#4</td>
-                    <td>
-                        <img src={perfume} alt="perfume" />
-                    </td>
-                    <td>perfume</td>
-                    <td className="StockIn">In Stock</td>
-                    <td>$9302</td>
-                    <td>9/12/2022</td>
-                    <td>
-                        <div className="editIcon"><EditIcon onClick={() => functio(this)} /></div>
-                    </td>
-                    <td>
-                        <div className="deleteIcon"><DeleteIcon /></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="check" />
-                        <label htmlFor="check"></label>
-                    </td>
-                    <td className='id'>#5</td>
-                    <td>
-                        <img src={cookie} alt="cookie" />
-                    </td>
-                    <td>cookie</td>
-                    <td className="StockIn">In Stock</td>
-                    <td>$4990</td>
-                    <td>02/03/2021</td>
-                    <td>
-                        <div className="editIcon"><EditIcon onClick={() => functio(this)} /></div>
-                    </td>
-                    <td>
-                        <div className="deleteIcon"><DeleteIcon /></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="check" />
-                        <label htmlFor="check"></label>
-                    </td>
-                    <td className='id'>#6</td>
-                    <td>
-                        <img src={cookie} alt="cookie" />
-                    </td>
-                    <td>cookie</td>
-                    <td className="StockIn">In Stock</td>
-                    <td>$4990</td>
-                    <td>02/03/2021</td>
-                    <td>
-                        <div className="editIcon"><EditIcon onClick={() => functio(this)} /></div>
-                    </td>
-                    <td>
-                        <div className="deleteIcon"><DeleteIcon /></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="check" />
-                        <label htmlFor="check"></label>
-                    </td>
-                    <td className='id'>#7</td>
-                    <td>
-                        <img src={cookie} alt="cookie" />
-                    </td>
-                    <td>cookie</td>
-                    <td className="StockIn">In Stock</td>
-                    <td>$4990</td>
-                    <td>02/03/2021</td>
-                    <td>
-                        <div className="editIcon"><EditIcon onClick={() => functio(this)} /></div>
-                    </td>
-                    <td>
-                        <div className="deleteIcon"><DeleteIcon /></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="check" />
-                        <label htmlFor="check"></label>
-                    </td>
-                    <td className='id'>#8</td>
-                    <td>
-                        <img src={cookie} alt="cookie" />
-                    </td>
-                    <td>cookie</td>
-                    <td className="StockIn">In Stock</td>
-                    <td>$4990</td>
-                    <td>02/03/2021</td>
-                    <td>
-                        <div className="editIcon"><EditIcon onClick={() => functio(this)} /></div>
-                    </td>
-                    <td>
-                        <div className="deleteIcon"><DeleteIcon /></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="check" />
-                        <label htmlFor="check"></label>
-                    </td>
-                    <td className='id'>#9</td>
-                    <td>
-                        <img src={cookie} alt="cookie" />
-                    </td>
-                    <td>cookie</td>
-                    <td className="StockIn">In Stock</td>
-                    <td>$4990</td>
-                    <td>02/03/2021</td>
-                    <td>
-                        <div className="editIcon"><EditIcon onClick={() => functio(this)} /></div>
-                    </td>
-                    <td>
-                        <div className="deleteIcon"><DeleteIcon /></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="check" />
-                        <label htmlFor="check"></label>
-                    </td>
-                    <td className='id'>#10</td>
-                    <td>
-                        <img src={cookie} alt="cookie" />
-                    </td>
-                    <td>cookie</td>
-                    <td className="StockIn">In Stock</td>
-                    <td>$4990</td>
-                    <td>02/03/2021</td>
-                    <td>
-                        <div className="editIcon"><EditIcon onClick={() => functio(this)} /></div>
-                    </td>
-                    <td>
-                        <div className="deleteIcon"><DeleteIcon /></div>
-                    </td>
-                </tr>
+              {products.map((data,id)=>{
+                return <TableRow key={id} moq={data.moq} _id={data._id} title={data.title} description={data.description}
+                category={data.category} image={data.image} price={data.price} slashedPrice={data.slashedPrice}
+                measuringUnit={data.measuringUnit} />
+            })}
             </tbody>
         </table>
     )

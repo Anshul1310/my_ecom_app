@@ -59,7 +59,7 @@ const Users = () => {
 				<h2>Edit User Details</h2>
 				<div className="editFields1">
 					<div className="editBuyerOrgName">
-						<label htmlFor="modalOrg"> Organization</label>
+						<label htmlFor="modalOrg"> yyssOrganization</label>
 						<input type="text" name="modalOrg" id="modalOrg" placeholder="Ex-orgXYZ" />
 					</div>
 					<div className="editBuyerContact">

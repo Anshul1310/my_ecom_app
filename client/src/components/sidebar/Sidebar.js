@@ -6,6 +6,9 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import FeedIcon from '@mui/icons-material/Feed';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
+import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SettingsIcon from '@mui/icons-material/Settings';
 
@@ -40,9 +43,21 @@ const Sidebar = () => {
 						</NavLink>
 					</li>
 					<li className="item">
+						<NavLink to='/categories'>
+							<CategoryOutlinedIcon className="icon" />
+							<span className="spanList">Categories</span>
+						</NavLink>
+					</li>
+					<li className="item">
 						<NavLink to='/sellers'>
-							<StoreMallDirectoryIcon className="icon" />
+							<LocalShippingOutlinedIcon className="icon" />
 							<span className="spanList">Sellers</span>
+						</NavLink>
+					</li>
+					<li className="item">
+						<NavLink to='/stores'>
+							<StoreMallDirectoryIcon className="icon" />
+							<span className="spanList">Stores</span>
 						</NavLink>
 					</li>
 					<li className="item">

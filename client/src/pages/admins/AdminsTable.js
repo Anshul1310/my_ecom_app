@@ -25,14 +25,10 @@ const AdminsTable = ({ modalOpen }) => {
         <table>
             <thead>
                 <tr>
-                    <td>
-                        <input type="checkbox" name="check" />
-                        <label htmlFor="check"></label>
-                    </td>
+                    
                     <td>ID</td>
                     <td>NAME</td>
                     <td>PASSWORD</td>
-                    <td>ACCESS</td>
                     <td>EDIT</td>
                     <td>DELETE</td>
                 </tr>

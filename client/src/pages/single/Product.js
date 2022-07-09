@@ -1,11 +1,89 @@
 import "./Product.css";
 import Sidebar from "../../components/sidebar/Sidebar"
 import Navbar from "../../components/navbar/Navbar"
+import { useLocation } from 'react-router-dom'
+
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Link } from 'react-router-dom'
 
+import api from "../../http";
+import {useEffect, useState} from "react";
 const Product = () => {
+	const location = useLocation();
+	
+    
+	const [id, setId]=useState(null);
+
+	const [categories, setCategories]=useState([]);
+	const [title,setTitle]=useState("");
+	const [description,setDescription]=useState("");
+	const [category,setCategory]=useState("");
+	const [isChanged, setIsChanged]=useState(false);
+	const [measuringUnit,setMeasuringUnit]=useState("");
+	const [price,setPrice]=useState("");
+	const [slashedPrice,setSlashePrice]=useState("");
+	const [moq, setMoq]=useState("");
+	const [image, setImage]=useState("#");
+
+	useEffect(()=>{
+		if(location.state!=null){
+		let from=location.state.from;
+		if(from!=null){
+			setTitle(from.title);
+			setDescription(from.description);
+			setCategory(from.category);
+			setMoq(from.moq);
+			setPrice(from.price);
+			setId(from._id);
+			setSlashePrice(from.slashedPrice);
+			setMeasuringUnit(from.measuringUnit);
+			setMoq(from.moq)
+			setImage("http://localhost:4000"+from.image);
+
+		}
+	}
+	api.get("/api/categories/all").then((data)=>{
+                  	setCategories(data.data);
+                  	console.log(data.data)
+                }).catch((err)=>{
+                    alert("Network Conncetion Error");
+                    console.log(err);
+                });
+	},[]);
+const uploadProduct=(e)=>{
+	if(id!=null){
+		console.log(id);
+api.post("/api/product/update",{
+title,id, description,category,isChanged, measuringUnit, price, slashedPrice, moq, image
+                }).then((data)=>{
+                    console.log(data.data)
+                }).catch((err)=>{
+                    alert("Network Conncetion Error");
+                    console.log(err);
+                });
+	}else{
+		api.post("/api/product/add",{
+title,id, description,category,isChanged, measuringUnit, price, slashedPrice, moq, image
+                }).then((data)=>{
+                    console.log(data.data)
+                }).catch((err)=>{
+                    alert("Network Conncetion Error");
+                    console.log(err);
+                });
+	}
+}
+
+const handleChange=(e)=>{
+		const file=e.target.files[0];
+		setIsChanged(true);
+		//to convert file to base64 string
+		const reader=new FileReader();
+		reader.readAsDataURL(file);
+		reader.onloadend=function(){
+			setImage(reader.result);
+		}
+	}
 	return (
 		<div className="main">
 			<Sidebar />
@@ -83,43 +161,48 @@ const Product = () => {
 						<div className="fields">
 							<div className="productName">
 								<label htmlFor="product">Product Name</label>
-								<input type="text" name="product" id="product" placeholder="Ex-Iphone13" />
+								<input type="text" value={title} onChange={(e)=>setTitle(e.target.value)} name="product" id="product" placeholder="Ex-Iphone13" />
 							</div>
 							<div className="productDes">
 								<label htmlFor="description">Description</label>
-								<textarea name="description" id="description" rows='3' placeholder="Ex-The iPhone 13 models come in 5.4 and 6.1-inch sizes, with the 5.4-inch iPhone 13 Pro positioned as Apple's smallest iPhone"></textarea>
+								<textarea name="description" value={description} onChange={(e)=>setDescription(e.target.value)} id="description" rows='3' placeholder="Ex-The iPhone 13 models come in 5.4 and 6.1-inch sizes, with the 5.4-inch iPhone 13 Pro positioned as Apple's smallest iPhone"></textarea>
 							</div>
 							<div className="productCate">
 								<label htmlFor="category">Category</label>
-								<select name="category" id="category">
-									<option value="select">Select Catgeory</option>
-									<option value="NewArrival">New Arrival</option>
-									<option value="MostPopular">Most Popular</option>
-									<option value="Trending">Trending</option>
+								<select value={category} name="category" onChange={(e)=>setCategory(e.target.value)} id="category">
+									{
+										categories.map((data, id)=>{
+											return <option key={id} value="Trending">{data.name}</option>
+										})
+									}
 								</select>
 							</div>
 							<div className="productExpiry">
-								<label htmlFor="expiryDate">Expiry Date</label>
-								<input type="text" name="expiryDate" id="expiryDate" placeholder="Ex-No Expiry Date" />
+								<label htmlFor="expiryDate">Measuring Unit</label>
+								<input type="text" name="expiryDate" value={measuringUnit} onChange={(e)=>{setMeasuringUnit(e.target.value)}} id="expiryDate" placeholder="Ex-No Expiry Date" />
 							</div>
 							<div className="stockUnits">
-								<label htmlFor="stock">Units in Stock</label>
-								<input type="text" name="stock" id="stock" placeholder="Ex-100" />
+								<label htmlFor="stock">Slashed Price</label>
+								<input type="text" name="stock" value={slashedPrice} onChange={(e)=>setSlashePrice(e.target.value)} id="stock" placeholder="Ex-100" />
+							</div>
+							<div className="stockUnits">
+								<label htmlFor="stock">Minimum Order Quantity</label>
+								<input type="text" name="stock" value={moq} onChange={(e)=>setMoq(e.target.value)} id="stock" placeholder="Ex-100" />
 							</div>
 							<div className="productPrice">
-								<label htmlFor="price">Price</label>
-								<input type="text" name="price" id="price" placeholder="Ex-$750" />
+								<label>Price</label>
+								<input type="text" value={price} onChange={(e)=>setPrice(e.target.value)} name="price" id="price" placeholder="Ex-$750" />
 							</div>
 						</div>
 						<div className="productImage">
-							<div className="img" onClick={() => document.getElementById('fileInput').click()}>
-								<input type="file" name="fileInput" id="fileInput" />
-								<CloudUploadIcon />
+							<div className="img" >
+								<input type="file" name="fileInput" onChange={(e)=>handleChange(e)} id="fileInput" />
+								<img width="100%" height="100%" src={image}/>
 							</div>
-							<div className="upload">UPLOAD PRODUCT IMAGE</div>
+							<div className="upload" ><label htmlFor="fileInput">UPLOAD PRODUCT IMAGE</label></div>
 						</div>
 					</div>
-					<div className="addButton">ADD PRODUCT</div>
+					<div onClick={(e)=>uploadProduct(e)} className="addButton">SAVE</div>
 				</div>
 
 			</div>

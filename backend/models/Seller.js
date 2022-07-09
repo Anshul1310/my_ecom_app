@@ -8,14 +8,15 @@ const schema=mongoose.Schema({
 	woreda:String,
 	kebele:String,
 	phone:Number,
-	additional_phone:Number,
+	_id:String,
+	additional_number:Number,
 	email:String,
 	level:String,
 	tin:String,
-	agent:String,
 	type:String,
-	book:String,
+	age:Number,
+	bookNumber:String,
 	distanceDetail:String
-});
+},{ timestamps: true});
 
 module.exports=mongoose.model("Sellers", schema);

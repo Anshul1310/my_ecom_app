@@ -5,6 +5,9 @@
     flex-direction: column;
     row-gap: 25px;
 }
+.ebtn{
+    padding: 10px;
+}
 
 .allSellers {
     display: flex;
@@ -102,10 +105,6 @@
 .closeBtn {
     background-color: #ea4444;
     transition: all 0.1s linear;
-}
-
-.information1 .closeBtn {
-    display: none;
 }
 
 .editBtn:hover {
