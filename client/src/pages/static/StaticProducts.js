@@ -30,7 +30,6 @@ const StaticProducts = () => {
                     alert("Network Conncetion Error");
                     console.log(err);
                 });
-
     }
 
 const handleEdit=(e)=>{

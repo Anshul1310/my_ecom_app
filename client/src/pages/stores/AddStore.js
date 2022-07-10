@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import './stores.css'
 import {useState} from "react";
 import api from "../../http";
-import {useNavigate} from "react";
+import {useNavigate} from "react-router-dom";
 
 
 const AddStore = () => {
@@ -16,9 +16,10 @@ const AddStore = () => {
     const [capacity, setCapacity]=useState();
 
     const handleClick=(e)=>{
-  api.post("/api/buyers/all").then((data)=>{
-                    console.log(data.data);
-                    navigate("/stores");
+  api.post("/api/stores/add",{
+                name, location, capacity
+                }).then((data)=>{
+                    navigate("/stores")
                 }).catch((err)=>{
                     alert("Network Conncetion Error");
                     console.log(err);

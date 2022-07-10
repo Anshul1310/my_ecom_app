@@ -32,7 +32,6 @@ const navigate=useNavigate();
     const [bookNumber,setBookNumber]=useState();
     const [tin,setTin]=useState();
     useEffect(()=>{
-        console.log(from.id);
         setName(from.name);
         setGender(from.gender);
         setAge(from.age);
@@ -54,7 +53,7 @@ const navigate=useNavigate();
          api.post("/api/sellers/update",{
                     name, id,email, gender, bookNumber, zone,woreda, kebele, tin, additional_number, phone, type, level, age
                 }).then((data)=>{
-                    console.log(data.data);
+                    console.log(data);
                     navigate("/sellers");
                     
                 }).catch((err)=>{

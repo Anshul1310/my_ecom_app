@@ -20,10 +20,7 @@ const UsersTable = () => {
         <table>
             <thead>
                 <tr>
-                    <td>
-                        <input type="checkbox" name="check" />
-                        <label htmlFor="check"></label>
-                    </td>
+                    
                     <td>ID</td>
                     <td>ORGANISATION</td>
                     <td>CONTACT PERSON</td>

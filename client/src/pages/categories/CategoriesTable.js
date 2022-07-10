@@ -30,7 +30,7 @@ const CategoriesTable = () => {
             <tbody>
             {
                 categories.map((data)=>{
-                   return <TableRow image={data.image} name={data.name}/>
+                   return <TableRow id={data._id} image={data.image} name={data.name}/>
                 })
                 
             }

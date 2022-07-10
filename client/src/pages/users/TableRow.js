@@ -7,15 +7,12 @@ const TableRow=(props)=>{
 
 	return (
 		     <tr>
-                    <td>
-                        <input type="checkbox" name="check" />
-                        <label htmlFor="check"></label>
-                    </td>
+                    
                     <td className='id'>{_id}</td>
                     <td>{organization}</td>
                     <td>{name}</td>
                     {/* <td>Bole Subcity Kebele 14 H.No179/B Addis Ababa 7512</td> */}
-                    <td>+251 398198287</td>
+                    <td>{phone}</td>
                     <td>{type}</td>
                     <td>{level}</td>
                     {/* <td>NNN-NN-NNNN</td> */}

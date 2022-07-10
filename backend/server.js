@@ -46,7 +46,7 @@ app.use("/api/product-price", product_price);
 app.use("/api/product", product);
 app.use("/api/categories", category);
 app.use("/api/news", news);
-app.use("/api/store", store);
+app.use("/api/stores", store);
 
 app.use("/api/notification", notification);
 app.use("/api/order",order);

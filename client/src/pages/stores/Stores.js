@@ -2,20 +2,51 @@ import React from 'react'
 import Sidebar from "../../components/sidebar/Sidebar"
 import Navbar from "../../components/navbar/Navbar"
 import SearchIcon from '@mui/icons-material/Search';
+import api from "../../http";
+
 import StoresTable from './StoresTable';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import CloseIcon from '@mui/icons-material/Close';
+import {useEffect, useState} from "react";
 import EditIcon from '@mui/icons-material/Edit';
 import { NavLink, Link } from 'react-router-dom';
 import './stores.css'
 
 const Stores = () => {
+
+    const [name, setName] =useState();
+    const [capacity, setCapacity]=useState();
+    const [location, setLocation]=useState();
+    const [id, setId]=useState();
+
+    const setModelDetail=()=>{
+            api.post("/api/stores/find",{id:localStorage.getItem("lastStore")}).then((data)=>{
+                console.log(data.data);
+                        setName(data.data.name);
+                        setCapacity(data.data.capacity);
+                        setLocation(data.data.location);
+                    }).catch((err)=>{
+                        alert("Network Conncetion Error");
+                        console.log(err);
+                    });
+    }
     const modalOpen = () => {
+        setModelDetail();
         const modal = document.getElementById('modal');
         const container = document.getElementById('Container');
         container.style.opacity = '0.3'
         modal.style.display = 'flex'
+    }
+
+    const handleEdit=()=>{
+        api.post("/api/stores/update",{name, location, capacity,id:localStorage.getItem("lastStore")}).then((data)=>{
+                        modalClose();
+window.location.reload();
+                    }).catch((err)=>{
+                        alert("Network Conncetion Error");
+                        console.log(err);
+                    });
     }
     const modalClose = () => {
         const modal = document.getElementById('modal');
@@ -74,19 +105,19 @@ const Stores = () => {
                 <div className="editFields2">
                     <div className="editStore">
                         <label>Store Name</label>
-                        <input type="text" placeholder="Ex-JBM Supermall" />
+                        <input onChange={(e)=>setName(e.target.value)} value={name} type="text" placeholder="Ex-JBM Supermall" />
                     </div>
                     <div className="editStore">
                         <label>Store Location</label>
-                        <input type="text" placeholder="Ex-Street 13 near hotel sun" />
+                        <input onChange={(e)=>setLocation(e.target.location)} value={location} type="text" placeholder="Ex-Street 13 near hotel sun" />
                     </div>
                     <div className="editStore">
                         <label>Store Capacity</label>
-                        <input type="text" placeholder="Ex-10000 items" />
+                        <input onChange={(e)=>setCapacity(e.target.value)} value={capacity} type="text" placeholder="Ex-10000 items" />
                     </div>
                 </div>
                 <div className="editAndCloseBtn">
-                    <div className="editBtn"><EditIcon /> Edit Details</div>
+                    <div className="editBtn" onClick={(e)=>handleEdit(e)}><EditIcon /> Edit Details</div>
                     <div className="closeBtn" onClick={() => modalClose()}><CloseIcon /> Close</div>
                 </div>
             </div>

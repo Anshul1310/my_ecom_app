@@ -4,11 +4,11 @@ const Seller=require("../models/Seller");
 router.post("/add",async (req,res)=>{
 	try{
 		console.log(req.body);
-		const {name, gender,region, zone, woreda, kebele, phone,additional_phone, email, level, tin,age, type, bookNumber,distanceDetail}=req.body;
+		const {name, gender,region, zone, woreda, kebele, phone,additional_number, email, level, tin,age, type, bookNumber,distanceDetail}=req.body;
 		const number=await Seller.find().countDocuments();
 			const idIn="WS"+number;
 		const seller=await Seller.create({
-			name, gender,region, _id:idIn, zone, woreda, kebele, phone,additional_phone, email, level, tin,age, type, bookNumber,distanceDetail
+			name, gender,region, _id:idIn, zone, woreda, kebele,additional_number:additional_number, phone, email, level, tin,age, type, bookNumber,distanceDetail
 		});
 		res.status(200).json({msg:"success"});
 	}catch(er){
@@ -40,12 +40,11 @@ try{
 
 router.post("/update",async (req,res)=>{
 	try{
-		console.log(req.body.id);
-		const seller=Seller.updateOne({_id:req.body.id}, {
-			"$set":{
-				...req.body
-			}
-		})
+		const products=await Seller.updateOne({_id:req.body.id},
+			{
+				"$set":{...req.body}
+			});
+		res.status(200).json(products);
 	}catch(er){
 		res.status(404).json({msg:"Something went wrong"})
 		console.log(er);

@@ -5,7 +5,6 @@ const jwt=require("jsonwebtoken");
 
 router.post("/add",async (req,res)=>{
 	try{
-
 			const {email, password, name, access}=req.body;
 			const number=await Admin.find().countDocuments();
 			const idIn="WA"+number;

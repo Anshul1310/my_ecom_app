@@ -36,5 +36,16 @@ router.get("/all",async (req,res)=>{
 	}
 })
 
+router.post("/delete",async (req,res)=>{
+	try{
+		const category=await Category.deleteOne({_id:req.body.id});
+
+		res.status(200).json(category);
+		
+	}catch(e){
+		res.status(400).json({msg:"error"});
+	}
+})
+
 
 module.exports=router;
