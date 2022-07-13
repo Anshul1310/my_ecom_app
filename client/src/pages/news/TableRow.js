@@ -1,7 +1,7 @@
 import cookie from '../home/cookie.jpg'
 import glass from '../home/glass.jpg'
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import React from 'react'
 import headPhone from '../home/headPhone.jpg'
 const TableRow=(props)=>{
 	return(

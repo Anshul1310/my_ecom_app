@@ -9,7 +9,6 @@ const CategoriesTable = () => {
 
     useEffect(()=>{
         api.get("/api/categories/all").then((data)=>{
-                    console.log(data.data);
                     setCategories(data.data);
                 }).catch((err)=>{
                     alert("Network Conncetion Error");
@@ -29,8 +28,8 @@ const CategoriesTable = () => {
             </thead>
             <tbody>
             {
-                categories.map((data)=>{
-                   return <TableRow id={data._id} image={data.image} name={data.name}/>
+                categories.map((data, key)=>{
+                   return <TableRow key={key} id={data._id} image={data.image} name={data.name}/>
                 })
                 
             }

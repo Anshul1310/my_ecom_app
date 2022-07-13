@@ -1,12 +1,11 @@
-import React from 'react'
-import Sidebar from "../../components/sidebar/Sidebar"
-import Navbar from "../../components/navbar/Navbar"
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Link, useNavigate } from 'react-router-dom'
-import './addSeller.css'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Navbar from "../../components/navbar/Navbar";
+import Sidebar from "../../components/sidebar/Sidebar";
 import api from "../../http";
+import './addSeller.css';
 
-import {useState} from "react";
 
 
 const AddSeller = () => {

@@ -1,7 +1,8 @@
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import React from 'react'
 const TableRow=(props)=>{
-	const {functio, name, email,_id, password, access}=props;
+	const {functio, name,_id, password}=props;
 	return (
 		<tr>
                    

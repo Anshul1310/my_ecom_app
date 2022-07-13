@@ -1,14 +1,16 @@
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
+import React from 'react'
+import ReactDOM from 'react-dom'
+
 const ProtectedRoute=(props)=>{
 	const navigate=useNavigate();
-	const {Component, isAuth}=props;
+	const {Component}=props;
 	useEffect(()=>{
-		console.log(isAuth);
 		if(localStorage.getItem("token")===null){
 			navigate("/login");
 		}
-	},[])
+	})
 	return (
 
 		<Component/>

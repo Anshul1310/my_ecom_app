@@ -1,13 +1,12 @@
+import CloseIcon from '@mui/icons-material/Close'
+import EditIcon from '@mui/icons-material/Edit'
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft'
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight'
 import React from 'react'
-import { Link } from 'react-router-dom'
-import Sidebar from "../../components/sidebar/Sidebar"
+import { Link, NavLink } from 'react-router-dom'
 import Navbar from "../../components/navbar/Navbar"
+import Sidebar from "../../components/sidebar/Sidebar"
 import AdminsTable from '../admins/AdminsTable'
-import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
-import { NavLink } from 'react-router-dom'
-import CloseIcon from '@mui/icons-material/Close';
-import EditIcon from '@mui/icons-material/Edit';
 import './admins.css'
 
 const Admins = () => {

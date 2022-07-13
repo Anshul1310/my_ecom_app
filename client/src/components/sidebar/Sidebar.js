@@ -1,16 +1,15 @@
-import "./Sidebar.scss"
-import { NavLink } from 'react-router-dom'
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import StoreMallDirectoryIcon from '@mui/icons-material/StoreMallDirectory';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import FeedIcon from '@mui/icons-material/Feed';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
-import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import SettingsIcon from '@mui/icons-material/Settings';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import StoreMallDirectoryIcon from '@mui/icons-material/StoreMallDirectory';
+import { NavLink } from 'react-router-dom';
+import "./Sidebar.scss";
 
 const Sidebar = () => {
 	return (

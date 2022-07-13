@@ -1,11 +1,11 @@
 import "./App.css";
 
-import { BrowserRouter, Route,Routes, Redirect } from 'react-router-dom';
-
+import { BrowserRouter, Route,Routes } from 'react-router-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import Home from "./pages/home/Home";
 import Products from "./pages/products/Products";
 import Product from "./pages/single/Product";
-import Notification from "./pages/notification/Notification";
 import Orders from "./pages/orders/Orders";
 import ViewOrder from "./pages/orders/ViewOrder";
 import {useEffect, useState} from "react";

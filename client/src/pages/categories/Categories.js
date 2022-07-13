@@ -1,17 +1,16 @@
-import React from 'react'
-import Sidebar from "../../components/sidebar/Sidebar"
-import Navbar from "../../components/navbar/Navbar"
-import CategoriesTable from '../categories/CategoriesTable'
-import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
-import { NavLink } from 'react-router-dom'
-import './Categories.css'
-import {useState, useEffect} from "react";
-import api from "../../http";
-
-import SearchIcon from '@mui/icons-material/Search';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import CloseIcon from '@mui/icons-material/Close';
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import SearchIcon from '@mui/icons-material/Search';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import Navbar from "../../components/navbar/Navbar";
+import Sidebar from "../../components/sidebar/Sidebar";
+import api from "../../http";
+import CategoriesTable from '../categories/CategoriesTable';
+import './Categories.css';
+
 
 const Categories = () => {
 
@@ -107,7 +106,7 @@ const Categories = () => {
 							<option value="dailyUse">DailyUse</option>
 							<option value="grocery">Grocery</option>
 						</select>*/}
-						<input type="text" placeholder="E.g. Vegetables"/>
+						<input type="text" onChange={(e)=>setName(e.target.value)} placeholder="E.g. Vegetables"/>
 					</div>
 					<div className="addCategory">
 						<input type="file" onChange={(e)=>handleImageChnage(e)}/>

@@ -2,7 +2,6 @@ import "./Navbar.css";
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import { Link } from 'react-router-dom'
 import SearchIcon from '@mui/icons-material/Search';
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 
 const Navbar = () => {
     return (

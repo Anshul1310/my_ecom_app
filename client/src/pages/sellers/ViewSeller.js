@@ -1,14 +1,12 @@
-import "./seller.css";
-import Sidebar from "../../components/sidebar/Sidebar"
-import Navbar from "../../components/navbar/Navbar"
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import CloseIcon from '@mui/icons-material/Close';
-import {useEffect, useState} from "react";
-import EditIcon from '@mui/icons-material/Edit';
-import { Link } from 'react-router-dom'
+import {  useState } from "react";
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React from 'react'
+import Navbar from "../../components/navbar/Navbar";
+import Sidebar from "../../components/sidebar/Sidebar";
 import api from "../../http";
+import "./seller.css";
 
-import { useLocation, useNavigate} from 'react-router-dom'
 
 
 const ViewSeller = () => {
@@ -16,38 +14,22 @@ const ViewSeller = () => {
     const { from } = location.state;
 
 const navigate=useNavigate();
-    const [name, setName]=useState();
-    const [gender, setGender]=useState();
-    const [age,setAge]=useState();
-    const [region,setRegion]=useState();
-    const [zone, setZone]=useState();
-    const [woreda,setWoreda]=useState();
-    const [kebele,setKebele]=useState();
-    const [phone,setPhone]=useState();
-    const [additional_number,setAdditionalNumber]=useState();
-    const [email,setEmail]=useState();
-    const [id,setId]=useState();
-    const [type,setType]=useState("Importer");
-    const [level,setLevel]=useState("Level 1");
-    const [bookNumber,setBookNumber]=useState();
-    const [tin,setTin]=useState();
-    useEffect(()=>{
-        setName(from.name);
-        setGender(from.gender);
-        setAge(from.age);
-        setId(from.id);
-        setRegion(from.region);
-        setZone(from.zone);
-        setWoreda(from.woreda);
-        setKebele(from.kebele);
-        setPhone(from.phone);
-        setAdditionalNumber(from.additional_number);
-        setEmail(from.email);
-        setTin(from.tin);
-        setBookNumber(from.bookNumber);
-        setType(from.type);
-        setLevel(from.level)
-    },[])
+    const [name, setName]=useState(from.name);
+    const [gender, setGender]=useState(from.gender);
+    const [age,setAge]=useState(from.age);
+    const [region,setRegion]=useState(from.region);
+    const [zone, setZone]=useState(from.zone);
+    const [woreda,setWoreda]=useState(from.woreda);
+    const [kebele,setKebele]=useState(from.kebele);
+    const [phone,setPhone]=useState(from.phone);
+    const [additional_number,setAdditionalNumber]=useState(from.additional_number);
+    const [email,setEmail]=useState(from.email);
+    const [id]=useState(from.id);
+    const [type,setType]=useState(from.type);
+    const [level,setLevel]=useState(from.level);
+    const [bookNumber,setBookNumber]=useState(from.bookNumber);
+    const [tin,setTin]=useState(from.tin);
+
     
    const handleClick=(e)=>{
          api.post("/api/sellers/update",{

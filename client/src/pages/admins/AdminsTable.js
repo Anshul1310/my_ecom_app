@@ -1,9 +1,6 @@
-import React from 'react'
-import TableRow from "./TableRow";
-import {useEffect, useState} from "react";
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import React, { useEffect, useState } from 'react';
 import api from "../../http";
+import TableRow from "./TableRow";
  
 const AdminsTable = ({ modalOpen }) => {
     const functio = () => {

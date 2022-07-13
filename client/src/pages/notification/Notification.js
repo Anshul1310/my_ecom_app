@@ -2,6 +2,7 @@ import "./Notification.css";
 import Sidebar from "../../components/sidebar/Sidebar"
 import Navbar from "../../components/navbar/Navbar"
 import PersonIcon from '@mui/icons-material/Person';
+import React from 'react'
 import InventoryIcon from '@mui/icons-material/Inventory';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';

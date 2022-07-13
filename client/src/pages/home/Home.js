@@ -1,24 +1,10 @@
+import LineChart from '../../components/chart/LineChart';
+import PieChart from '../../components/chart/PieChart';
+import DetailsBox from "../../components/detailsBox/DetailBox";
+import Navbar from "../../components/navbar/Navbar";
+import React from 'react'
+import Sidebar from "../../components/sidebar/Sidebar";
 import "./Home.css";
-import Sidebar from "../../components/sidebar/Sidebar"
-import Navbar from "../../components/navbar/Navbar"
-import DetailsBox from "../../components/detailsBox/DetailBox"
-import LineChart from '../../components/chart/LineChart'
-import PieChart from '../../components/chart/PieChart'
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import { Link } from "react-router-dom";
-import cookie from './cookie.jpg'
-import glass from './glass.jpg'
-import headPhone from './headPhone.jpg'
-import perfume from './perfume.jpg'
-import PersonIcon from '@mui/icons-material/Person';
-import InventoryIcon from '@mui/icons-material/Inventory';
-import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
-import FileDownloadIcon from '@mui/icons-material/FileDownload';
-import LockIcon from '@mui/icons-material/Lock';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import DoneIcon from '@mui/icons-material/Done';
-import DeleteIcon from '@mui/icons-material/Delete';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const Home = () => {
 	return (

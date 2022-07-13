@@ -1,6 +1,7 @@
 import cookie from '../home/cookie.jpg'
 import glass from '../home/glass.jpg'
 import headPhone from '../home/headPhone.jpg'
+import React from 'react'
 import perfume from '../home/perfume.jpg'
 import api from "../../http";
 

@@ -1,7 +1,6 @@
 import {Link} from "react-router-dom";
-import React from "react";
 import api from "../../http";
-
+import React from 'react'
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const TableRow=(props)=>{
