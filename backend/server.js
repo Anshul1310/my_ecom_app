@@ -1,5 +1,6 @@
 const app =require("express")();
 const express=require("express");
+const server=require("http").createServer();
 const mongoose =require("mongoose");
 const cors=require("cors");
 require('dotenv').config()
@@ -51,9 +52,8 @@ app.use("/api/stores", store);
 app.use("/api/notification", notification);
 app.use("/api/order",order);
 app.use("/api/admin",admin);
+const port = process.env.PORT || 4000;
 
 
-app.listen(process.env.PORT || 4000,()=>{
-	console.log("listening");
-})
+server.listen(port,()=>{})
 
