@@ -16,32 +16,20 @@ const ViewUser = () => {
 
 const location = useLocation()
     const { from } = location.state;
-    const [email, setEmail]=useState();
-    const [name, setName]=useState();
-    const [tin, setTin]=useState();
+    const [email, setEmail]=useState(from.email);
+    const [name, setName]=useState(from.name);
+    const [tin, setTin]=useState(from.tin);
     const navigate=useNavigate();
-    const [id,setId]=useState();
-    const [additional_number, setAdditionalNumber]=useState();
-    const [organization,setOrganisation]=useState("");
-    const [address,setAddress]=useState("");
-    const [phone,setPhone]=useState("");
-    const [type,setType]=useState("");
-    const [contact_person,setContactPerson]=useState();
-    const [level,setLevel]=useState("Level 1");
+    const [id,setId]=useState(from._id);
+    const [additional_number, setAdditionalNumber]=useState(from.additional_number);
+    const [organization,setOrganisation]=useState(from.organization);
+    const [address,setAddress]=useState(from.address);
+    const [phone,setPhone]=useState(from.phone);
+    const [type,setType]=useState(from.type);
+    const [contact_person,setContactPerson]=useState(from.contact_person);
+    const [level,setLevel]=useState(from.level);
     
-    useEffect(()=>{
-        setEmail(from.email);
-        setName(from.name);
-        setTin(from.tin);
-        setAdditionalNumber(from.additional_number);
-        setOrganisation(from.organization);
-        setAddress(from.address);
-        setPhone(from.phone);
-        setId(from._id);
-        setType(from.type)
-        setContactPerson(from.contact_person)
-        setLevel(from.level)
-    },[])
+   
 
     const editUser = () => {
          api.post("/api/buyers/update",{
