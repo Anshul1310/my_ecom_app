@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaUsers, FaDollarSign } from 'react-icons/fa'
 import { BsBox } from 'react-icons/bs'
 import { AiFillShop } from 'react-icons/ai'
+import React from "react";
 
 const DetailBox = () => {
 	return (
