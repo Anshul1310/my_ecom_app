@@ -2,7 +2,7 @@ const app =require("express")();
 const express=require("express");
 const mongoose =require("mongoose");
 const cors=require("cors");
-
+require('dotenv').config()
 const sellers=require("./routes/sellers");
 const news=require("./routes/news");
 
@@ -53,7 +53,7 @@ app.use("/api/order",order);
 app.use("/api/admin",admin);
 
 
-app.listen(4000,()=>{
+app.listen(process.env.PORT || 4000,()=>{
 	console.log("listening");
 })
 
