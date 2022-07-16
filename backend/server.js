@@ -6,7 +6,6 @@ const cors=require("cors");
 require('dotenv').config()
 const sellers=require("./routes/sellers");
 const news=require("./routes/news");
-
 const buyers=require("./routes/buyers");
 const notification=require("./routes/notification");
 const product=require("./routes/product");
@@ -37,6 +36,9 @@ const corsOption = {
 };
 app.use(express.json({ limit: '10mb' }));
 
+app.get("/",(req,res)=>{
+    console.log("hjdj");
+})
 app.use(cors(corsOption));
 app.use("/images",express.static("images"));
 app.use(express.json());
@@ -54,6 +56,9 @@ app.use("/api/order",order);
 app.use("/api/admin",admin);
 const port = process.env.PORT || 4000;
 
+app.listen(port,()=>{
+    console.log(`Listening to the port`)
+})
 
-server.listen(port,()=>{console.log(`Listening to the port ${port}`)})
+// server.listen(port,()=>{console.log(`Listening to the port ${port}`)})
 

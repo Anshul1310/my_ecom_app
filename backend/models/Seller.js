@@ -7,6 +7,7 @@ const schema=mongoose.Schema({
 	zone:String,
 	woreda:String,
 	kebele:String,
+	password:String,
 	phone:Number,
 	_id:String,
 	additional_number:Number,

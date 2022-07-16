@@ -27,10 +27,12 @@ router.get("/all",async (req,res)=>{
 	}
 })
 
+
+
 router.get("/login",async (req,res)=>{
 	try{
 		const {email, password}=req.body;
-		const admin=await Admin.findOne(email, password);
+		const admin=await Admin.find(email, password);
 		console.log(admin);
 		if(admin.length==0){
 			res.status(401).json({message:"Ivaliud Credentials"});

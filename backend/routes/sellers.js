@@ -6,9 +6,10 @@ router.post("/add",async (req,res)=>{
 		console.log(req.body);
 		const {name, gender,region, zone, woreda, kebele, phone,additional_number, email, level, tin,age, type, bookNumber,distanceDetail}=req.body;
 		const number=await Seller.find().countDocuments();
-			const idIn="WS"+number;
+		const idIn="WS"+number;
+		const password=phone;
 		const seller=await Seller.create({
-			name, gender,region, _id:idIn, zone, woreda, kebele,additional_number:additional_number, phone, email, level, tin,age, type, bookNumber,distanceDetail
+			name, gender,region,password, _id:idIn, zone, woreda, kebele,additional_number:additional_number, phone, email, level, tin,age, type, bookNumber,distanceDetail
 		});
 		res.status(200).json({msg:"success"});
 	}catch(er){
@@ -23,6 +24,21 @@ router.get("/all",async (req,res)=>{
 		res.status(200).json(seller);
 	}catch(er){
 		res.status(404).json({msg:"Something went wrong"})
+		console.log(er);
+	}
+})
+
+router.post("/login",async (req,res)=>{
+	try{
+		const seller=await Seller.findOne({password:req.body.password, email:req.body.email});
+		console.log(seller)
+		if(seller==null){
+			res.status(404).json("Invalid Credentials");
+		}else{
+			res.status(200).json(seller);
+		}
+	}catch(er){
+		res.status(404).json("Something went wrong")
 		console.log(er);
 	}
 })

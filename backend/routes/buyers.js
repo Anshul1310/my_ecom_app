@@ -40,16 +40,29 @@ router.post("/update",async (req,res)=>{
 		console.log(er);
 	}
 })
-
-router.get("/Buyer/:id",async (req,res)=>{
+// Accessing via uid
+router.get("/buyer/uid/:uid",async (req,res)=>{
 	try{
-		const buyer=await Buyer.find({_id:req.params.id});
+		const buyer=await Buyer.findOne({uid:req.params.uid});
 		console.log(buyer);
-		res.status(200).json({msg:"success"});
+		res.status(200).json(buyer);
 	}catch(er){
 		res.status(404).json({msg:"Something went wrong"})
 		console.log(er);
 	}
 })
+
+// Accessing via id
+router.get("/buyer/id/:id",async (req,res)=>{
+	try{
+		const buyer=await Buyer.findOne({_id:req.params.id});
+		res.status(200).json(buyer);
+	}catch(er){
+		res.status(404).json({msg:"Something went wrong"})
+		console.log(er);
+	}
+})
+
+
 
 module.exports=router;

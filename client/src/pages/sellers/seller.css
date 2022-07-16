@@ -5,7 +5,8 @@
     flex-direction: column;
     row-gap: 25px;
 }
-.ebtn{
+
+.ebtn {
     padding: 10px;
 }
 
@@ -59,7 +60,7 @@
 
 .container {
     /* opacity: 0.3; */
-    position: relative;
+    /* position: relative; */
 }
 
 .editFields1 {

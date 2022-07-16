@@ -88,7 +88,7 @@
     width: 22px;
     position: absolute;
     padding: 0.5rem;
-    top: 229px;
+    top: 250px;
     left: 705px;
 }
 
@@ -97,7 +97,7 @@
     width: 22px;
     position: absolute;
     padding: 0.5rem;
-    top: 290px;
+    top: 311px;
     left: 705px;
 }
 
@@ -125,7 +125,7 @@
     cursor: pointer;
 }
 
-.adminBtn{
+.adminBtn {
     display: none;
 }
 

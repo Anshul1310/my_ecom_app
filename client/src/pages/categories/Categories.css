@@ -6,10 +6,18 @@
     row-gap: 25px;
 }
 
+.notification_main {
+    display: flex;
+}
+
 .categories {
     display: flex;
     justify-content: space-between;
     border-radius: 10px;
+}
+
+.box .main {
+    padding: 0.5rem 1rem
 }
 
 .categories table img {
