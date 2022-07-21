@@ -9,6 +9,8 @@ const news=require("./routes/news");
 const buyers=require("./routes/buyers");
 const notification=require("./routes/notification");
 const product=require("./routes/product");
+const Settings=require("./routes/settings");
+
 const order=require("./routes/order");
 const product_price=require("./routes/product_price");
 const category=require("./routes/category");
@@ -44,6 +46,7 @@ app.use("/images",express.static("images"));
 app.use(express.json());
 app.use("/api/sellers", sellers);
 app.use("/api/buyers", buyers);
+app.use("/api/settings", Settings);
 app.use("/api/product-price", product_price);
 
 app.use("/api/product", product);

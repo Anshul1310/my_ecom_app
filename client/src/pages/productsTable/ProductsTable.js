@@ -30,14 +30,9 @@ const ProductsTable = ({ modalOpen }) => {
         <table>
             <thead>
                 <tr>
-                    <td>
-                        <input type="checkbox" name="check" />
-                        <label htmlFor="check"></label>
-                    </td>
-                    <td>ID</td>
                     <td>PHOTO</td>
                     <td>NAME</td>
-                    <td>STOCK</td>
+                    <td>Measuring Unit</td>
                     <td>PRICE</td>
                     <td>CREATED AT</td>
                     <td>EDIT</td>
@@ -46,7 +41,7 @@ const ProductsTable = ({ modalOpen }) => {
             </thead>
             <tbody>
               {products.map((data,id)=>{
-                return <TableRow key={id} moq={data.moq} _id={data._id} title={data.title} description={data.description}
+                return <TableRow key={id} moq={data.moq} store={data.store} seller={data.seller} createdAt={data.createdAt} _id={data._id} title={data.title} description={data.description}
                 category={data.category} image={data.image} price={data.price} slashedPrice={data.slashedPrice}
                 measuringUnit={data.measuringUnit} />
             })}

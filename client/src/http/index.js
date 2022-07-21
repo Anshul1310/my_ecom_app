@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 
 const api = axios.create({
-	baseURL: "wangari.et",
+	baseURL: "http://localhost:4000",
 	withCredentials: true,
 	headers: {
 		"Content-Type": "application/json",

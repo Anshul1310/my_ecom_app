@@ -5,6 +5,7 @@ const path=require("path");
 
 router.post("/add",async (req,res)=>{
 	try{
+		console.log(req.body.store);
 		const {image} =req.body;
 		const buffer = Buffer.from(
             image.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''),
@@ -17,7 +18,6 @@ router.post("/add",async (req,res)=>{
     	jimpRes.resize(100, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
    		const avatar=`/images/${imagePath}`;	
 		const product=await Product.create({...req.body, image:avatar});
-		console.log(product);
 		res.status(200).json(product);
 	}catch(e){
 		console.log(e);
@@ -40,11 +40,19 @@ router.post("/update",async (req,res)=>{
 			  const jimpRes=await Jimp.read(buffer);
 	    	jimpRes.resize(100, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
 	   		const avatar=`/images/${imagePath}`;
-	   		const product=await Product.findByIdAndUpdate(req.body.id,{...req.body, image:avatar})
+	   		const product=await Product.updateOne({_id:req.body._id},{
+	   			"$set":{
+	   				...req.body, image:avatar
+	   			}
+	   		})
+	   		console.log(product)
 	   		res.status(200).json(product);
 		}else{
-			const product=await Product.findByIdAndUpdate(req.body.id,{...req.body})
-		res.status(200).json(product);
+			const product=await Product.updateOne({_id:req.body._id},{
+				"$set":{...req.body}
+			})
+			console.log()
+			res.status(200).json(product);
 		}
 	}catch(e){
 		console.log(e);
@@ -63,6 +71,18 @@ router.post("/product/:id",async (req,res)=>{
 		console.log(er);
 	}
 })
+
+router.post("/delete",async (req,res)=>{
+	try{
+		const product=await Product.deleteOne({_id:req.body.id});
+
+		res.status(200).json(product);
+		
+	}catch(e){
+		res.status(400).json("error");
+	}
+})
+
 
 router.get("/all",async (req,res)=>{
 	try{

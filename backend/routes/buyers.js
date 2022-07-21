@@ -1,15 +1,22 @@
 const router = require("express").Router();
 const Buyer=require("../models/Buyer");
+const Settings =require("../models/Settings");
 
 router.post("/add",async (req,res)=>{
 	try{
+		console.log("req.body");
 		const {organization, address, phone,email, additional_number, type, tin, name, contact_person, level}=req.body;
-		const number=await Buyer.find().countDocuments();
+		const obj=await Settings.findOne();
+			const number=obj.adminIndex;
+			await Settings.updateOne({
+				buyerIndex:number+1
+			})
 		const idIn="WB"+number;
 		const buyer=await Buyer.create({organization, _id:idIn, address, phone,email, additional_number, type, tin, name, contact_person, level});
-		res.status(200).json({msg:"success"});
+		console.log(buyer);
+		res.status(200).json(buyer);
 	}catch(er){
-		res.status(404).json({msg:"Something went wrong"})
+		res.status(404).json("Something went wrong")
 		console.log(er);
 	}
 })
@@ -20,7 +27,7 @@ router.get("/all",async (req,res)=>{
 		console.log(buyer);
 		res.status(200).json(buyer);
 	}catch(er){
-		res.status(404).json({msg:"Something went wrong"})
+		res.status(401).json({msg:"Something went wrong"})
 		console.log(er);
 	}
 })
@@ -41,24 +48,33 @@ router.post("/update",async (req,res)=>{
 	}
 })
 // Accessing via uid
-router.get("/buyer/uid/:uid",async (req,res)=>{
+router.get("/find/phone/:phone",async (req,res)=>{
 	try{
-		const buyer=await Buyer.findOne({uid:req.params.uid});
+		const buyer=await Buyer.findOne({phone:req.params.phone});
 		console.log(buyer);
-		res.status(200).json(buyer);
+		if(buyer==null){
+			res.status(404).json("Invalid Credentials")
+		}else{
+			res.status(200).json(buyer);
+		}
+		
 	}catch(er){
-		res.status(404).json({msg:"Something went wrong"})
+		res.status(404).json("Error Occured")
 		console.log(er);
 	}
 })
 
 // Accessing via id
-router.get("/buyer/id/:id",async (req,res)=>{
+router.get("/find/id/:id",async (req,res)=>{
 	try{
 		const buyer=await Buyer.findOne({_id:req.params.id});
-		res.status(200).json(buyer);
+		if(buyer==null){
+			res.status(404).json("Invalid Credentials")
+		}else{
+			res.status(200).json(buyer);
+		}
 	}catch(er){
-		res.status(404).json({msg:"Something went wrong"})
+		res.status(404).json("Error Occured")
 		console.log(er);
 	}
 })

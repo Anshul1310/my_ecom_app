@@ -4,13 +4,13 @@ import headPhone from '../home/headPhone.jpg'
 import perfume from '../home/perfume.jpg'
 import api from "../../http";
 import { useNavigate } from "react-router-dom";
-import React from 'react'
+import React,{useState} from 'react'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-// import dayjs from 'dayjs';
+import dayjs from 'dayjs';
 
 const TableRow = (props) => {
-    // const date=dayjs(props.createdAt).format('DD/MM/YYYY') 
+    const [date,setDate] =useState(dayjs(props.createdAt).format('DD/MM/YYYY'));
     const navigate = useNavigate();
     const handleClick = (e) => {
         api.post("/api/product-price/delete", {
@@ -36,7 +36,7 @@ const TableRow = (props) => {
             </td>
             <td>{props.title}</td>
             <td>{props.measuringUnit}</td>
-            {/* <td>{date}</td> */}
+        <td>{date}</td>
             <td>{props.location}</td>
             <td>{props.price}</td>
             <td>

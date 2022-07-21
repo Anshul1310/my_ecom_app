@@ -3,18 +3,27 @@ const Schema = mongoose.Schema;
 
 const schema=mongoose.Schema({
 	buyer:{
-		type:Schema.Types.ObjectId,
-		ref:"Buyer"
+		type:Schema.Types.String,
+		ref:"buyer"
 	},
 	seller:{
-		type:Schema.Types.ObjectId,
-		ref:"Seller"
+		type:Schema.Types.String,
+		ref:"seller"
 	},
 	note:String,
 	location:{
 		type:Object
 	},
-	items:{ type : Array , "default" : [] },
+	items:[{
+		productId:{
+			type:Schema.Types.ObjectId,
+			ref:"Product"
+		},
+		quantity:{
+			type:Number,
+			default:1
+		}
+	}],
 	totalPrice:Number,
 	status:String,
 	paymentType:String,

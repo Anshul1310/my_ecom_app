@@ -32,7 +32,7 @@ const AdminsTable = ({ modalOpen }) => {
             </thead>
             <tbody>
             {admins.map((data,id)=>{
-                return <TableRow access={data.access} key={id} password={data.password} _id={data._id} name={data.name} email={data.email} functio={functio}/>;
+                return <TableRow access={data.access} key={id} password={data.password} id={data._id} name={data.name} email={data.email} functio={functio}/>;
             })}
             </tbody>
         </table>

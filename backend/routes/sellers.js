@@ -1,11 +1,16 @@
 const router = require("express").Router();
 const Seller=require("../models/Seller");
+const Settings =require("../models/Settings");
 
 router.post("/add",async (req,res)=>{
 	try{
 		console.log(req.body);
 		const {name, gender,region, zone, woreda, kebele, phone,additional_number, email, level, tin,age, type, bookNumber,distanceDetail}=req.body;
-		const number=await Seller.find().countDocuments();
+		const obj=await Settings.findOne();
+			const number=obj.adminIndex;
+			await Settings.updateOne({
+				sellerIndex:number+1
+		})
 		const idIn="WS"+number;
 		const password=phone;
 		const seller=await Seller.create({
@@ -56,6 +61,7 @@ try{
 
 router.post("/update",async (req,res)=>{
 	try{
+		console.log(req.body);
 		const products=await Seller.updateOne({_id:req.body.id},
 			{
 				"$set":{...req.body}

@@ -1,24 +1,35 @@
-import React from "react";
+import React,{useState} from "react";
 import headPhone from '../home/headPhone.jpg'
 import perfume from '../home/perfume.jpg'
 import DeleteIcon from '@mui/icons-material/Delete';
 import {Link} from "react-router-dom";
+import dayjs from 'dayjs';
+import api from "../../http";
+
+
 import EditIcon from '@mui/icons-material/Edit';
 const TableRow=(props)=>{
+        const [date,setDate] =useState(dayjs(props.createdAt).format('DD/MM/YYYY'));
+
+const handleDelete=()=>{
+         api.post("/api/product/delete",{
+                id:props.id
+                }).then((data)=>{
+                     window.location.reload();
+                }).catch((err)=>{
+                    alert("Network Conncetion Error");
+                    console.log(err);
+                });
+    }
     return (
         <tr>
         <td>
-            <input type="checkbox" name="check" />
-            <label htmlFor="check"></label>
+            <img src={props.image} />
         </td>
-        <td className='id'>#1</td>
-        <td>
-            <img src="" />
-        </td>
-        <td>Cookie</td>
-        <td className="StockIn">In Stock</td>
-        <td>$4990</td>
-        <td>02/03/2021</td>
+        <td>{props.title}</td>
+        <td className="StockIn">{props.measuringUnit}</td>
+        <td>{props.price}</td>
+        <td>{date}</td>
         <td>
             <div className="editIcon">
             <Link to='/Products/addProduct' state={{ from: props }}><EditIcon/></Link>
@@ -26,7 +37,7 @@ const TableRow=(props)=>{
             </div>
         </td>
         <td>
-            <div className="deleteIcon"><DeleteIcon /></div>
+            <div className="deleteIcon" onClick={(e)=>handleDelete(e)}><DeleteIcon /></div>
         </td>
     </tr>
     )

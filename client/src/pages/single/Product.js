@@ -14,7 +14,10 @@ const Product = () => {
 	
     
 	const [id, setId]=useState(null);
-
+	const [sellers, setSellers]=useState([]);
+	const [stores,setStores]=useState([]);
+	const [store,setStore]=useState(null);
+	const [seller,setSeller]=useState(null);
 	const [categories, setCategories]=useState([]);
 	const [title,setTitle]=useState("");
 	const [description,setDescription]=useState("");
@@ -35,6 +38,9 @@ const Product = () => {
 			setCategory(from.category);
 			setMoq(from.moq);
 			setPrice(from.price);
+			setCategory(from.category)
+			setSeller(from.seller)
+			setStore(from.store)
 			setId(from._id);
 			setSlashePrice(from.slashedPrice);
 			setMeasuringUnit(from.measuringUnit);
@@ -44,18 +50,35 @@ const Product = () => {
 		}
 	}
 	api.get("/api/categories/all").then((data)=>{
-                  	setCategories(data.data);
-                  	console.log(data.data)
+            setCategories(data.data);
+            setCategory(data.data[0].category);
+            console.log(data.data)
+						api.get("/api/sellers/all").then((data)=>{
+					             setSellers(data.data);
+					             setSeller(data.data[0]._id)
+									api.get("/api/stores/all").then((data)=>{
+					             		setStores(data.data);
+					             		setStore(data.data[0].name)
+					            		}).catch((err)=>{
+					                    alert("3Network Conncetion Error");
+					                    console.log(err);
+					             	});
+					            }).catch((err)=>{
+					                    alert("1Network Conncetion Error");
+					                    console.log(err);
+					             });
                 }).catch((err)=>{
-                    alert("Network Conncetion Error");
+                    alert("1Network Conncetion Error");
                     console.log(err);
                 });
+
+
 	},[]);
 const uploadProduct=(e)=>{
 	if(id!=null){
-		console.log(id);
+		
 api.post("/api/product/update",{
-title,id, description,category,isChanged, measuringUnit, price, slashedPrice, moq, image
+title,id, description,category,isChanged, seller, store,measuringUnit, price, slashedPrice, moq, image
                 }).then((data)=>{
                     console.log(data.data)
                 }).catch((err)=>{
@@ -64,7 +87,7 @@ title,id, description,category,isChanged, measuringUnit, price, slashedPrice, mo
                 });
 	}else{
 		api.post("/api/product/add",{
-title,id, description,category,isChanged, measuringUnit, price, slashedPrice, moq, image
+title,id, description,category,isChanged,seller, store, measuringUnit, price, slashedPrice, moq, image
                 }).then((data)=>{
                     console.log(data.data)
                 }).catch((err)=>{
@@ -172,7 +195,28 @@ const handleChange=(e)=>{
 								<select value={category} name="category" onChange={(e)=>setCategory(e.target.value)} id="category">
 									{
 										categories.map((data, id)=>{
-											return <option key={id} value="Trending">{data.name}</option>
+											return <option key={id}>{data.name}</option>
+										})
+									}
+								</select>
+							</div>
+							<div className="productCate">
+								<label htmlFor="category">Sellers</label>
+								<select id="sellers" onChange={(e)=>setSeller(e.target.value)}>
+									{
+										sellers.map((data, id)=>{
+											return <option key={id}>{data._id}</option>
+										})
+									}
+								</select>
+							</div>
+							
+							<div className="productCate">
+								<label htmlFor="category">Products</label>
+								<select id="sellers" onChange={(e)=>setStore(e.target.value)}>
+									{
+										stores.map((data, id)=>{
+											return <option key={id}>{data.name}</option>
 										})
 									}
 								</select>

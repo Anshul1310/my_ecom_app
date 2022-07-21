@@ -7,11 +7,8 @@ const schema=mongoose.Schema({
 	category:String,
 	image:String,
 	store:String,
+	seller:String,
 	moq:Number,
-	seller:{
-		type:Schema.Types.ObjectId,
-		ref:"Seller"
-	},
 	price:Number,
 	slashedPrice:Number,
 	measuringUnit:String

@@ -10,7 +10,7 @@ const TableRow=(props)=>{
 
     const handleDelete=(e)=>{
         api.post("/api/categories/delete",{
-                id:props.id
+                id:props._id
                 }).then((data)=>{
                      window.location.reload();
                 }).catch((err)=>{
