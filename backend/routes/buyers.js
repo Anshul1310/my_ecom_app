@@ -4,15 +4,14 @@ const Settings =require("../models/Settings");
 
 router.post("/add",async (req,res)=>{
 	try{
-		console.log("req.body");
-		const {organization, address, phone,email, additional_number, type, tin, name, contact_person, level}=req.body;
+		const {organization, address, phone,email, additional_number,status, type, tin, name, contact_person, level}=req.body;
 		const obj=await Settings.findOne();
 			const number=obj.adminIndex;
 			await Settings.updateOne({
 				buyerIndex:number+1
 			})
 		const idIn="WB"+number;
-		const buyer=await Buyer.create({organization, _id:idIn, address, phone,email, additional_number, type, tin, name, contact_person, level});
+		const buyer=await Buyer.create({organization, _id:idIn,status, address, phone,email, additional_number, type, tin, name, contact_person, level});
 		console.log(buyer);
 		res.status(200).json(buyer);
 	}catch(er){
@@ -51,7 +50,6 @@ router.post("/update",async (req,res)=>{
 router.get("/find/phone/:phone",async (req,res)=>{
 	try{
 		const buyer=await Buyer.findOne({phone:req.params.phone});
-		console.log(buyer);
 		if(buyer==null){
 			res.status(404).json("Invalid Credentials")
 		}else{

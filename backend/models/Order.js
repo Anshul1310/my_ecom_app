@@ -3,30 +3,21 @@ const Schema = mongoose.Schema;
 
 const schema=mongoose.Schema({
 	buyer:{
-		type:Schema.Types.String,
-		ref:"buyer"
+		type:String
 	},
 	seller:{
-		type:Schema.Types.String,
-		ref:"seller"
+		type:String
 	},
 	note:String,
 	location:{
-		type:Object
+		type:String
 	},
-	items:[{
-		productId:{
-			type:Schema.Types.ObjectId,
-			ref:"Product"
-		},
-		quantity:{
-			type:Number,
-			default:1
-		}
-	}],
+	phone:String,
+	items:{ type : Array , "default" : [] },
 	totalPrice:Number,
 	status:String,
+	address:String,
 	paymentType:String,
-	orderId:String
+	orderId:String,
 },{ timestamps: true});
 module.exports=mongoose.model("Order",schema);

@@ -7,9 +7,9 @@ router.post("/add",async (req,res)=>{
 		console.log(req.body);
 		const {name, gender,region, zone, woreda, kebele, phone,additional_number, email, level, tin,age, type, bookNumber,distanceDetail}=req.body;
 		const obj=await Settings.findOne();
-			const number=obj.adminIndex;
-			await Settings.updateOne({
-				sellerIndex:number+1
+		const number=obj.adminIndex;
+		await Settings.updateOne({
+			sellerIndex:number+1
 		})
 		const idIn="WS"+number;
 		const password=phone;

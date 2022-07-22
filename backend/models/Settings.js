@@ -16,6 +16,10 @@ const schema=mongoose.Schema({
 		type:Number,
 		default:1
 	},
+	charge:{
+		type:Number,
+		default:1
+	},
 	_id:{
 		type:String,
 		default:"setingsOfTheApp"

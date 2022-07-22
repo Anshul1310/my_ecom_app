@@ -5,7 +5,7 @@ const path=require("path");
 
 router.post("/add",async (req,res)=>{
 	try{
-		console.log(req.body.store);
+		console.log(req.body);
 		const {image} =req.body;
 		const buffer = Buffer.from(
             image.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''),
@@ -21,7 +21,7 @@ router.post("/add",async (req,res)=>{
 		res.status(200).json(product);
 	}catch(e){
 		console.log(e);
-		res.status(400).json({msg:"error"})
+		res.status(400).json("error")
 	}
 })
 
