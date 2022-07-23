@@ -422,7 +422,7 @@ table input[type='checkbox']:checked::before {
     display: flex;
     flex-direction: column;
     row-gap: 5px;
-    width: 21vw;
+    width: 19vw;
 }
 
 #modalProduct,
@@ -442,4 +442,51 @@ table input[type='checkbox']:checked::before {
     flex-wrap: wrap;
     column-gap: 15px;
     row-gap: 15px;
+}
+
+#modal2 {
+    /* height: 200px; */
+    width: 828px;
+    background-color: #c1c1c1;
+    border-radius: 10px;
+    /* position: absolute; */
+    position: fixed;
+    /* top: 202px;
+        left: 445px; */
+    display: none;
+    padding: 1rem;
+    /* display: flex; */
+    flex-direction: column;
+    row-gap: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.img1 {
+    height: 158px;
+    width: 380px;
+    background: #aaa;
+    cursor: pointer;
+    transition: all 0.1s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img1:hover {
+    background-color: #838282;
+}
+
+.productImage1 {
+    width: 36vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+    align-self: center;
+}
+
+#modal2 h2 {
+    align-self: center;
 }

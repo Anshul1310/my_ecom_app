@@ -39,13 +39,13 @@ const Products = () => {
                 <div className="productsPage">
                     <div className="sortAndActions">
                         <h2>All Products</h2>
-                        <div className="sortBox">
+                        {/*<div className="sortBox">
                             <select name="sorting" id="sorting">
                                 <option value="sort">Sort By</option>
                                 <option value="desc">Desc</option>
                                 <option value="asc">Asc</option>
                             </select>
-                        </div>
+                        </div>*/}
                         {/* <div className="NumOfItems">
                             <select name="itemNum" id="itemNum">
                                 <option value="10">10</option>

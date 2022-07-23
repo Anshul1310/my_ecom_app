@@ -21,6 +21,8 @@ const location = useLocation()
     const [tin, setTin]=useState(from.tin);
     const navigate=useNavigate();
     const [id,setId]=useState(from._id);
+        const [status, setStatus]=useState(from.status);
+
     const [additional_number, setAdditionalNumber]=useState(from.additional_number);
     const [organization,setOrganisation]=useState(from.organization);
     const [address,setAddress]=useState(from.address);
@@ -33,7 +35,7 @@ const location = useLocation()
 
     const editUser = () => {
          api.post("/api/buyers/update",{
-                    name, email, id, tin, additional_number, organization
+                    name, email, id,status, tin, additional_number, organization
                     ,address, phone, type, contact_person, level
                 }).then((data)=>{
                     navigate("/users");
@@ -109,6 +111,14 @@ const location = useLocation()
                                     <option value="Level 1">Level 1</option>
                                     <option value="Level 2">Level 2</option>
                                     <option value="Level 3">Level 3</option>
+                                </select>
+                            </div>
+                            <div className="viewUser">
+                                <label >Status</label>
+                                <select value={status} onChange={(e)=>setStatus(e.target.value)} >
+                                    <option value="pending">Pending</option>
+                                    <option value="verified">Verified</option>
+                                    <option value="rejected">Rejected</option>
                                 </select>
                             </div>
                             <div className="viewUser">

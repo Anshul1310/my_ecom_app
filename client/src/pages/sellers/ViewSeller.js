@@ -17,6 +17,7 @@ const navigate=useNavigate();
     const [name, setName]=useState(from.name);
     const [gender, setGender]=useState(from.gender);
     const [age,setAge]=useState(from.age);
+    const [status, setStatus]=useState(from.status);
     const [region,setRegion]=useState(from.region);
     const [zone, setZone]=useState(from.zone);
     const [woreda,setWoreda]=useState(from.woreda);
@@ -33,7 +34,7 @@ const navigate=useNavigate();
     
    const handleClick=(e)=>{
          api.post("/api/sellers/update",{
-                    name, id,email, gender, bookNumber, zone,woreda, kebele, tin, additional_number, phone, type, level, age
+                    name, id,email, gender,status, bookNumber, zone,woreda, kebele, tin, additional_number, phone, type, level, age
                 }).then((data)=>{
                     console.log(data);
                     navigate("/sellers");
@@ -74,6 +75,16 @@ const navigate=useNavigate();
                                     <option value="Importer">Importer</option>
                                     <option value="Distributor">Distributor</option>
                                     <option value="Wholesaler">Wholesaler</option>
+                                </select>
+                            </div>
+
+                            <div className="viewSeller">
+                                <label>Status</label>
+                                <select  onChange={(e)=>setStatus(e.target.value)} value={status}  >
+                                    <option value="pending">Pending</option>
+                                    <option value="verified">Verified</option>
+                                    <option value="rejected">Rejected</option>
+                                   
                                 </select>
                             </div>
 

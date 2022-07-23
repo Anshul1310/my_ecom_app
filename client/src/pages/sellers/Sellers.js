@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Sidebar from "../../components/sidebar/Sidebar"
 import Navbar from "../../components/navbar/Navbar"
 import SearchIcon from '@mui/icons-material/Search';
@@ -10,6 +10,8 @@ import { NavLink, Link } from 'react-router-dom';
 import './seller.css'
 
 const Sellers = () => {
+    const [status, setStatus]=useState("verified");
+
     return (
         <div className="main">
             <Sidebar />
@@ -20,20 +22,20 @@ const Sellers = () => {
                     <div className="sortAndActions">
                         <h2>Sellers List</h2>
                         <div className="sortBox">
-                            <select name="sorting" id="sorting">
-                                <option value="sort">Sort By</option>
-                                <option value="desc">Desc</option>
-                                <option value="asc">Asc</option>
+                            <select name="sorting" value={status} onChange={(e)=>setStatus(e.target.value)} id="sorting">
+                                <option value="pending">Pending</option>
+                                <option value="rejected">Rejected</option>
+                                <option value="verified">Verified</option>
                             </select>
                         </div>
-                        <div className="NumOfItems">
+                       {/* <div className="NumOfItems">
                             <select name="itemNum" id="itemNum">
                                 <option value="10">10</option>
                                 <option value="20">20</option>
                                 <option value="30">30</option>
                                 <option value="40">40</option>
                             </select>
-                        </div>
+                        </div>*/}
                         <div className="searchBox">
                             <input type="text" name="filter" id="filter" />
                             <SearchIcon />
@@ -45,7 +47,7 @@ const Sellers = () => {
                         </div>
                     </div>
                     <div className="allSellers">
-                        <SellersTable />
+                        <SellersTable status={status} />
                     </div>
                     <div className="pageNum">
                         <KeyboardDoubleArrowLeftIcon />

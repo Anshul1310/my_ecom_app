@@ -6,7 +6,7 @@ router.post("/add",async (req,res)=>{
 	try{
 		const {organization, address, phone,email, additional_number,status, type, tin, name, contact_person, level}=req.body;
 		const obj=await Settings.findOne();
-			const number=obj.adminIndex;
+			const number=obj.buyerIndex;
 			await Settings.updateOne({
 				buyerIndex:number+1
 			})
@@ -73,6 +73,39 @@ router.get("/find/id/:id",async (req,res)=>{
 		}
 	}catch(er){
 		res.status(404).json("Error Occured")
+		console.log(er);
+	}
+})
+
+router.get("/all/verified",async (req,res)=>{
+	try{
+		const buyer=await Buyer.find({status:"verified"});
+		console.log(buyer);
+		res.status(200).json(buyer);
+	}catch(er){
+		res.status(401).json({msg:"Something went wrong"})
+		console.log(er);
+	}
+})
+
+router.get("/all/pending",async (req,res)=>{
+	try{
+		const buyer=await Buyer.find({status:"pending"});
+		console.log(buyer);
+		res.status(200).json(buyer);
+	}catch(er){
+		res.status(401).json({msg:"Something went wrong"})
+		console.log(er);
+	}
+})
+
+router.get("/all/rejected",async (req,res)=>{
+	try{
+		const buyer=await Buyer.find({status:"rejected"});
+		console.log(buyer);
+		res.status(200).json(buyer);
+	}catch(er){
+		res.status(401).json({msg:"Something went wrong"})
 		console.log(er);
 	}
 })

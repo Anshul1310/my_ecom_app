@@ -23,6 +23,13 @@
     position: absolute;
 }
 
+.editCommission1 {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    width: 43vw;
+}
+
 .container .main {
     padding: 0.5rem 1rem;
 }
@@ -36,6 +43,7 @@
 .icon {
     margin-right: 15px;
     position: relative;
+    cursor: pointer;
 }
 
 .right {

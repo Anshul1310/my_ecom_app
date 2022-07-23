@@ -12,7 +12,10 @@ const schema=mongoose.Schema({
 	kebele:String,
 	password:String,
 	phone:Number,
-	status:String,
+	status:{
+		type:String,
+		default:"pending"
+	},
 	_id:String,
 	additional_number:Number,
 	email:String,

@@ -1,9 +1,27 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
 .ordersPage {
     padding: 1rem;
     margin: 1rem;
     display: flex;
     flex-direction: column;
     row-gap: 25px;
+}
+
+.table {
+    align-self: center;
+}
+
+.table table {
+    text-align: center;
+    background: #f3f3f3;
+    border: 1px solid #bbb;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 81.2vw;
 }
 
 .allOrders {
@@ -26,7 +44,7 @@
 }
 
 .processing span,
-.shipped span,
+.dispatched span,
 .refunded span,
 .completed span,
 .cancelled span {
@@ -35,11 +53,11 @@
     padding: 0.2rem 0.5rem;
 }
 
-.processing span {
+.preparing span {
     background: #ff6e40;
 }
 
-.shipped span {
+.dispatched span {
     background: #293134;
 }
 
@@ -47,7 +65,7 @@
     background-color: #faee42;
 }
 
-.completed span {
+.delivered span {
     background-color: #05b171;
 }
 

@@ -7,20 +7,20 @@ import {useState,useEffect} from "react";
 import TableRow from "./TableRow";
 
 
-const SellersTable = () => {
+const SellersTable = (props) => {
 
 
 
 const [sellers, setSellers]=useState([]);
     useEffect(()=>{
-        api.get("/api/sellers/all").then((data)=>{
+        api.get("/api/sellers/all/"+props.status).then((data)=>{
                     console.log(data.data);
                     setSellers(data.data);
                 }).catch((err)=>{
                     alert("Network Conncetion Error");
                     console.log(err);
                 });
-    },[]);
+    },[props.status]);
 
 
     return (
@@ -46,6 +46,7 @@ const [sellers, setSellers]=useState([]);
                 return <TableRow key={id} id={data._id} name={data.name} 
                 email={data.email} type={data.type} gender={data.gender}
                 age={data.age} region={data.region} zone={data.zone}
+                status={data.status}
                 woreda={data.woreda} kebele={data.kebele} phone={data.phone}
                 additional_number={data.additional_number}
                 level={data.level} bookNumber={data.bookNumber} tin={data.tin}

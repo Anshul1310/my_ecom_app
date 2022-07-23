@@ -11,13 +11,13 @@ import EditIcon from '@mui/icons-material/Edit';
 
 const Earnings = () => {
     const modalOpen = () => {
-        const modal = document.getElementById('modal');
+        const modal = document.getElementById('modal2');
         const container = document.getElementById('Container');
         container.style.opacity = '0.3'
         modal.style.display = 'flex'
     }
     const modalClose = () => {
-        const modal = document.getElementById('modal');
+        const modal = document.getElementById('modal2');
         const container = document.getElementById('Container');
         container.style.opacity = '1'
         modal.style.display = 'none'
@@ -63,8 +63,8 @@ const Earnings = () => {
                 </div>
             </div>
 
-            <div id="modal">
-                <h2>Edit Product Details</h2>
+            <div id="modal2">
+                <h2>Edit Earning Details</h2>
                 <div className="editFields2">
                     <div className="editProductName">
                         <label htmlFor="modalProduct">Product Name</label>
@@ -96,6 +96,15 @@ const Earnings = () => {
                         <input type="text" name="modalCommission" id="modalCommission" placeholder="Ex-$1000" />
                     </div>
                 </div>
+
+                <div className="productImage1">
+                    <div className="img1" >
+                        <input type="file" name="fileInput" id="fileInput" />
+                        <img width="100%" height="100%" />
+                    </div>
+                    <div className="upload" ><label htmlFor="fileInput">UPLOAD</label></div>
+                </div>
+
                 <div className="editAndCloseBtn">
                     <div className="editBtn"><EditIcon /> Edit Order</div>
                     <div className="closeBtn" onClick={() => modalClose()}><CloseIcon /> Close</div>
