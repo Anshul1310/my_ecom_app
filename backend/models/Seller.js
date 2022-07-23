@@ -2,19 +2,30 @@ const mongoose=require("mongoose");
 
 const schema=mongoose.Schema({
 	name: String,
-	gender:String,
+	gender:{
+		type:String,
+		default:"Male"
+	},
 	region:String,
 	zone:String,
 	woreda:String,
 	kebele:String,
 	password:String,
 	phone:Number,
+	status:String,
 	_id:String,
 	additional_number:Number,
 	email:String,
-	level:String,
+	address:String,
+	level:{
+		default:"Level 1",
+		type:String
+	},
 	tin:String,
-	type:String,
+	type:{
+		type:String,
+		default:"Importer"
+	},
 	age:Number,
 	bookNumber:String,
 	distanceDetail:String

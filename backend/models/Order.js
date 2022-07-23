@@ -13,7 +13,14 @@ const schema=mongoose.Schema({
 		type:String
 	},
 	phone:String,
-	items:{ type : Array , "default" : [] },
+	items:{ type : Array , default : [{
+		seller:String, 
+		measuringUnit:String,
+		quantity:String, 
+		price:String,
+		title:String,
+		image:String
+	}] },
 	totalPrice:Number,
 	status:String,
 	address:String,
