@@ -9,6 +9,8 @@ const news=require("./routes/news");
 const buyers=require("./routes/buyers");
 const notification=require("./routes/notification");
 const product=require("./routes/product");
+const transaction=require("./routes/transaction");
+
 const Settings=require("./routes/settings");
 
 const order=require("./routes/order");
@@ -48,12 +50,11 @@ app.use("/api/sellers", sellers);
 app.use("/api/buyers", buyers);
 app.use("/api/settings", Settings);
 app.use("/api/product-price", product_price);
-
 app.use("/api/product", product);
 app.use("/api/categories", category);
 app.use("/api/news", news);
 app.use("/api/stores", store);
-
+app.use("/api/transaction", transaction)
 app.use("/api/notification", notification);
 app.use("/api/order",order);
 app.use("/api/admin",admin);

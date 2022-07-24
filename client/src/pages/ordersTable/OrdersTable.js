@@ -4,18 +4,18 @@ import api from "../../http";
 
 import { Link } from 'react-router-dom'
 
-const OrdersTable = () => {
+const OrdersTable = (props) => {
     const [orders,setOrders] =useState([]);
 
     useEffect(()=>{
-        api.get("/api/order/all").then((data)=>{
+        api.get("/api/order/"+props.status).then((data)=>{
                     console.log(data.data);
                     setOrders(data.data);
                 }).catch((err)=>{
                     alert("Network Conncetion Error");
                     console.log(err);
                 });
-    },[])
+    },[props.status])
     return (
         <table>
             <thead>

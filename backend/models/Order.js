@@ -22,6 +22,7 @@ const schema=mongoose.Schema({
 		image:String
 	}] },
 	totalPrice:Number,
+	serviceFee:Number,
 	status:String,
 	address:String,
 	paymentType:String,

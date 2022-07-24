@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Sidebar from "../../components/sidebar/Sidebar"
 import Navbar from "../../components/navbar/Navbar"
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -12,6 +12,7 @@ import { NavLink } from 'react-router-dom';
 import './Orders.css'
 
 const Orders = () => {
+	const [status, setStatus]=useState("all");
 	const modalOpen = () => {
 		const modal = document.getElementById('modal');
 		const container = document.getElementById('bigContainer');
@@ -34,25 +35,20 @@ const Orders = () => {
 					<div className="sortAndActions">
 						<h2>All Orders</h2>
 						<div className="sortBox">
-							<select name="sorting" id="sorting">
-								<option value="sort">Sort By</option>
-								<option value="desc">Desc</option>
-								<option value="asc">Asc</option>
+							<select name="sorting" onChange={(e)=>setStatus(e.target.value)} id="sorting">
+								<option value="all">All</option>
+								<option value="dispatched">Dispatched</option>
+								<option value="preparing">Preparing</option>
+								<option value="onTheWay">OnTheWay</option>
+								<option value="delivered">Delivered</option>
 							</select>
 						</div>
-						<div className="NumOfItems">
-							<select name="itemNum" id="itemNum">
-								<option value="10">10</option>
-								<option value="20">20</option>
-								<option value="30">30</option>
-								<option value="40">40</option>
-							</select>
-						</div>
-						<div className="searchBox">
+						
+						{/*<div className="searchBox">
 							<input type="text" name="filter" id="filter" />
 							<SearchIcon />
-						</div>
-						<div className="actionBox">
+						</div>*/}
+						{/*<div className="actionBox">
 							<input type="checkbox" name="action4" id="action4" />
 							<label htmlFor="action4" className="drop">Action <ArrowDropDownIcon /></label>
 							<div className="dropDown4">
@@ -68,18 +64,18 @@ const Orders = () => {
 									</li>
 								</ul>
 							</div>
-						</div>
+						</div>*/}
 					</div>
 					<div className="allOrders">
-						<OrdersTable modalOpen={modalOpen} />
+						<OrdersTable modalOpen={modalOpen} status={status} />
 					</div>
-					<div className="pageNum">
+					{/*<div className="pageNum">
 						<KeyboardDoubleArrowLeftIcon />
 						<NavLink to='#'>1</NavLink>
 						<NavLink to='#'>2</NavLink>
 						<NavLink to='#'>3</NavLink>
 						<KeyboardDoubleArrowRightIcon />
-					</div>
+					</div>*/}
 				</div>
 			</div>
 			{/* <div id="modal">

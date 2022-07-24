@@ -5,6 +5,8 @@ import Navbar from "../../components/navbar/Navbar"
 import TableRow from "./TableRow";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CloseIcon from '@mui/icons-material/Close';
+import api from "../../http";
+
 import EditIcon from '@mui/icons-material/Edit';
 import { Link,useLocation } from 'react-router-dom'
 
@@ -33,6 +35,16 @@ const ViewOrder = () => {
     //         input[i]. = true
     //     }
     // }
+
+    const handleChange=(e)=>{
+            api.post("/api/order/update",{status, date, note, buyer, items, orderId
+                }).then((data)=>{
+                    console.log(data.data)
+                }).catch((err)=>{
+                    alert("Network Conncetion Error");
+                    console.log(err);
+                });
+    }
     return (
         <div className="main">
             <Sidebar />
@@ -48,12 +60,12 @@ const ViewOrder = () => {
                         <div className="editFields">
                             <div className="viewOrder">
                                 <label>Buyer</label>
-                                <input type="text" value={buyer}  placeholder='Cortie Gemson' />
+                                <input type="text" value={buyer}  onChange={(e)=>setBuyer(e.target.value)} placeholder='Cortie Gemson' />
                             </div>
-                            {/*<div className="viewOrder">
-                                <label>Seller</label>
-                                <input type="text"  placeholder='John Doe' />
-                            </div>*/}
+                            <div className="viewOrder">
+                                <label>Order Id</label>
+                                <input type="text" value={orderId} placeholder='John Doe' />
+                            </div>
                             {/*<div className="viewOrder">
                                 <label >Store</label>
                                 <input type="text"  placeholder='JBM Store' />
@@ -68,16 +80,16 @@ const ViewOrder = () => {
                             </div>*/}
                             <div className="viewOrder">
                                 <label >Notes</label>
-                                <input type="text"  placeholder='imported perfumes' />
+                                <input type="text"  onChange={(e)=>setNote(e.target.value)} value={note} placeholder='imported perfumes' />
                             </div>
                             <div className="viewOrder">
                                 <label >Date</label>
-                                <input type="text"  placeholder='21/03/2022' />
+                                <input type="text" disabled value={date} />
                             </div>
-                            <div className="viewOrder">
+                           {/* <div className="viewOrder">
                                 <label >Time</label>
-                                <input type="text"  placeholder='1:01 pm' />
-                            </div>
+                                <input type="text" value={} placeholder='1:01 pm' />
+                            </div>*/}
                             <div className="viewSeller">
                                 <label>Status</label>
                                 <select  onChange={(e)=>setStatus(e.target.value)} value={status}  >
@@ -89,7 +101,7 @@ const ViewOrder = () => {
                             </div>
                         </div>
                         <div className="editAndCloseBtn">
-                            <div className="editBtn"><EditIcon /> Edit Order</div>
+                            <div className="editBtn" onClick={(e)=>handleChange(e.target.value)}><EditIcon /> Edit Order</div>
                             <div className="closeBtn" id="cls" ><CloseIcon /> Close</div>
                         </div>
                     </div>

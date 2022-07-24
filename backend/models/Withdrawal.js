@@ -1,12 +1,13 @@
 const mongoose=require("mongoose");
 const schema=mongoose.Schema({
 	seller:String,
-	payout:String,
-	status:String,
-	phone:Number,
+	status:{
+		type:String,
+		default:"initiated"
+	},
 	payout:Number,
 	transactionSlip:String,
 	transactionId:String
-})
+},{ timestamps: true})
 
-module.exports=mongoose.model("Withdrawal",schema);
+module.exports=mongoose.model("withdrawal",schema);
